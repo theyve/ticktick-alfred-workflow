@@ -1,34 +1,30 @@
-# TickTick Inbox for Alfred
-
-## Usage
-
-```text
-ttn Buy milk
-```
-
-- **↵:** add task
-- **⌥ + ↵:** choose list
-- **⌘ + ↵:** choose priority
-
-List and priority are optional. Lists come from TickTick; priorities are None, Low, Medium, High. TickTick opens on add.
-
-| Keyword          | Action           |
-| ---------------- | ---------------- |
-| `ttn Task title` | Add a task       |
-| `tti`            | Open Inbox       |
-| `ttt`            | Open Today       |
-| `tt7`            | Open Next 7 Days |
-
-Alternatively, select text and use **Add to TickTick Inbox** in Universal Actions. The same optional modifiers apply.
+# TickTick Inbox
 
 ## Setup
 
-Requires Alfred with Powerpack and the TickTick Mac app, signed in.
+On first list selection, allow Alfred to control TickTick if macOS asks.
 
-1. Open the `.alfredworkflow` file to install.
-2. On first list selection, allow Alfred to control TickTick if macOS asks.
+## Usage
 
-Change keywords in **Configure Workflow**.
+Add a task to the TickTick Inbox via the `ttn` keyword.
+
+![Adding a task to TickTick Inbox](images/add.png)
+
+* <kbd>↩</kbd> Add task.
+* <kbd>⌥</kbd><kbd>↩</kbd> Choose list.
+* <kbd>⌘</kbd><kbd>↩</kbd> Choose priority.
+
+![Choosing task priority](images/priority.png)
+
+Lists come from TickTick. Priorities are None, Low, Medium, and High. TickTick opens after adding.
+
+Open Inbox, Today, or Next 7 Days via the `tti`, `ttt`, and `tt7` keywords.
+
+![Opening Next 7 Days in TickTick](images/next7.png)
+
+Alternatively, send selected text to the Inbox via the Universal Action. The same modifiers apply.
+
+Change keywords in the Workflow’s Configuration.
 
 [Development](docs/DEVELOPMENT.md)
 

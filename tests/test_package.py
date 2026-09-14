@@ -30,7 +30,8 @@ class PackageTests(unittest.TestCase):
             self.assertEqual(output.read_bytes(), builder.build(root).read_bytes())
             with zipfile.ZipFile(output) as archive:
                 self.assertEqual(set(archive.namelist()), {
-                    "info.plist", "icon.png", "LICENSE"})
+                    "info.plist", "icon.png", "LICENSE",
+                    "images/add.png", "images/priority.png", "images/next7.png"})
                 for name in archive.namelist():
                     self.assertNotIn(b"PRIVATE_SENTINEL", archive.read(name))
                 manifest = plistlib.loads(archive.read("info.plist"))

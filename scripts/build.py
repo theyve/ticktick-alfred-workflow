@@ -22,6 +22,7 @@ def build(root=ROOT, output=None):
             obj["config"]["script"] = (root / "scripts" / "lists.js").read_text()
     files = {"info.plist": plistlib.dumps(manifest, sort_keys=False)}
     paths = [root / name for name in PUBLIC_FILES]
+    paths.extend(sorted((root / "images").glob("*.png")))
     for path in paths:
         if path.is_symlink():
             raise ValueError("Refusing to package symlink: " + str(path))

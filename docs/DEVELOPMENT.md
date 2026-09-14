@@ -9,7 +9,7 @@ python3 -m unittest discover -s tests -v
 python3 scripts/build.py
 ```
 
-The workflow and SHA-256 checksum are written to `dist/`. The package contains only the manifest, icon, and license. The Readme appears inside Alfred and is maintained only in `README.md`.
+The workflow and SHA-256 checksum are written to `dist/`. The package contains the manifest, icon, license, and Readme screenshots under `images/`. The Readme appears inside Alfred and is maintained only in `README.md`.
 
 References: [TickTick URL Scheme](https://help.ticktick.com/articles/7055781515422072832), [Alfred Open URL](https://www.alfredapp.com/help/workflows/actions/open-url/)
 
