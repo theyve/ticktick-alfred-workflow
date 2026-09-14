@@ -100,7 +100,14 @@ class PackageTests(unittest.TestCase):
         for field in ("variables", "userconfigurationconfig"):
             with self.subTest(field=field), tempfile.TemporaryDirectory() as directory:
                 root = Path(directory)
-                manifest = plistlib.loads((ROOT / "info.plist").read_bytes())
+                for name in ("info.plist", "README.md", "CHANGELOG.md", "icon.png", "LICENSE", "scripts", "images"):
+                    source = ROOT / name
+                    target = root / name
+                    if source.is_dir():
+                        shutil.copytree(source, target)
+                    else:
+                        shutil.copy2(source, target)
+                manifest = plistlib.loads((root / "info.plist").read_bytes())
                 if field == "variables":
                     manifest[field] = {"api_token": "PRIVATE_SENTINEL"}
                 else:
@@ -108,6 +115,31 @@ class PackageTests(unittest.TestCase):
                 (root / "info.plist").write_bytes(plistlib.dumps(manifest))
                 with self.assertRaisesRegex(ValueError, "Only keyword configuration"):
                     builder.build(root)
+
+    def test_build_requires_changelog_notes_for_version(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "source"
+            shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(".git", "dist", "__pycache__", "prefs.plist"))
+            (root / "CHANGELOG.md").write_text("# Changelog\n\n## 9.9.9\n\n- Other version.\n")
+            with self.assertRaisesRegex(ValueError, "CHANGELOG.md needs a ## 1.0.0 section"):
+                builder.build(root)
+            (root / "CHANGELOG.md").write_text("# Changelog\n\n## 1.0.0\n\n- Notes for users.\n")
+            builder.build(root)
+
+    def test_bump_and_changelog_helpers(self):
+        self.assertEqual(builder.bump_version("1.2.3", "patch"), "1.2.4")
+        self.assertEqual(builder.bump_version("1.2.3", "minor"), "1.3.0")
+        self.assertEqual(builder.bump_version("1.2.3", "major"), "2.0.0")
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            shutil.copy2(ROOT / "info.plist", root / "info.plist")
+            (root / "CHANGELOG.md").write_text("# Changelog\n\n## 1.0.0\n\n- First.\n")
+            builder.write_version("1.1.0", root)
+            self.assertEqual(builder.read_version(root), "1.1.0")
+            builder.prepend_changelog("1.1.0", ["Second."], root)
+            self.assertEqual(builder.require_changelog("1.1.0", root), ["Second."])
+            with self.assertRaisesRegex(ValueError, "already has"):
+                builder.prepend_changelog("1.1.0", ["Again."], root)
 
 
 if __name__ == "__main__":
