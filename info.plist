@@ -15,7 +15,7 @@
 	<key>name</key>
 	<string>TickTick Inbox</string>
 	<key>version</key>
-	<string>2.0.0-beta.4</string>
+	<string>1.0.0</string>
 	<key>webaddress</key>
 	<string></string>
 	<key>objects</key>
@@ -38,7 +38,7 @@
 				<key>text</key>
 				<string>Add task to TickTick Inbox</string>
 				<key>subtext</key>
-				<string>Type a title, then press Return</string>
+				<string>↵: add task, ⌥ + ↵: choose list, ⌘ + ↵: choose priority</string>
 			</dict>
 		</dict>
 		<dict>
@@ -80,7 +80,7 @@
 				<key>text</key>
 				<string>Open Today in TickTick</string>
 				<key>subtext</key>
-				<string>Open directly in the TickTick app</string>
+				<string>Open in TickTick</string>
 			</dict>
 		</dict>
 		<dict>
@@ -122,7 +122,7 @@
 				<key>text</key>
 				<string>Open Next 7 Days in TickTick</string>
 				<key>subtext</key>
-				<string>Open directly in the TickTick app</string>
+				<string>Open in TickTick</string>
 			</dict>
 		</dict>
 		<dict>
@@ -242,8 +242,8 @@ function listItems(projects) {
             title: p.name,
             arg: p.name,
             valid: unique,
-            subtitle: unique ? 'Return: add task · ⌘Return: choose priority' :
-                'Duplicate list name — rename it in TickTick before using this action'
+            subtitle: unique ? '↵: add task, ⌘ + ↵: choose priority' :
+                'Duplicate name — rename in TickTick'
         };
     });
 }
@@ -272,7 +272,7 @@ function run() {
 				<key>skipuniversalaction</key>
 				<true/>
 				<key>subtext</key>
-				<string>Return: add task · ⌘Return: choose priority</string>
+				<string>↵: add task, ⌘ + ↵: choose priority</string>
 				<key>title</key>
 				<string>Choose a TickTick list</string>
 				<key>type</key>
@@ -356,11 +356,11 @@ function run() {
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"title": "No priority", "arg": "0", "subtitle": "Return to add task"}, {"title": "Low priority", "arg": "1", "subtitle": "Return to add task"}, {"title": "Medium priority", "arg": "3", "subtitle": "Return to add task"}, {"title": "High priority", "arg": "5", "subtitle": "Return to add task"}]</string>
+				<string>[{"title": "No priority", "arg": "0", "subtitle": "↵: add task"}, {"title": "Low priority", "arg": "1", "subtitle": "↵: add task"}, {"title": "Medium priority", "arg": "3", "subtitle": "↵: add task"}, {"title": "High priority", "arg": "5", "subtitle": "↵: add task"}]</string>
 				<key>runningsubtext</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Choose with arrow keys or type to filter</string>
+				<string>↵: add task</string>
 				<key>title</key>
 				<string>Choose a priority</string>
 				<key>withspace</key>
@@ -406,7 +406,7 @@ function run() {
 				<key>text</key>
 				<string>Open TickTick Inbox</string>
 				<key>subtext</key>
-				<string>Open directly in the TickTick app</string>
+				<string>Open in TickTick</string>
 			</dict>
 		</dict>
 		<dict>
@@ -816,39 +816,5 @@ function run() {
 			</dict>
 		</dict>
 	</array>
-	<key>readme</key>
-	<string>## Usage
-
-```text
-ttn Buy milk
-```
-
-* **Return:** add to Inbox, without priority.
-* **⌥Return:** choose a list. Then Return to add, or ⌘Return to choose a priority.
-* **⌘Return:** choose a priority and add to Inbox.
-
-List and priority selection are optional. The list picker reads all non-archived task lists from TickTick. Priority choices are None, Low, Medium, and High. TickTick opens when you add the task.
-
-| Keyword | Action |
-| --- | --- |
-| `ttn Task title` | Add a task |
-| `tti` | Open Inbox |
-| `ttt` | Open Today |
-| `tt7` | Open Next 7 Days |
-
-Alternatively, select text and use **Add to TickTick Inbox** in Universal Actions. The same optional modifiers apply.
-
-## Setup
-
-Requires Alfred with Powerpack and the TickTick Mac app, signed in.
-
-1. Open the `.alfredworkflow` file to install. Disable older workflows using the same keywords.
-2. On first list selection, allow Alfred to control TickTick if macOS asks.
-3. Add a test task and check its destination and priority.
-
-Change keywords in **Configure Workflow**. No extra software or API token needed.
-
-Beta: the new selection flow still needs testing in Alfred.
-</string>
 </dict>
 </plist>

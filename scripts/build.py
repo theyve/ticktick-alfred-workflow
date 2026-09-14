@@ -16,12 +16,11 @@ def build(root=ROOT, output=None):
         c["variable"] not in keywords for c in manifest["userconfigurationconfig"]
     ):
         raise ValueError("Only keyword configuration belongs in this workflow.")
-    manifest["readme"] = (root / "docs" / "WORKFLOW.md").read_text()
+    manifest["readme"] = (root / "README.md").read_text()
     for obj in manifest["objects"]:
         if obj["type"] == "alfred.workflow.input.scriptfilter":
             obj["config"]["script"] = (root / "scripts" / "lists.js").read_text()
-    files = {"info.plist": plistlib.dumps(manifest, sort_keys=False),
-             "README.md": manifest["readme"].encode()}
+    files = {"info.plist": plistlib.dumps(manifest, sort_keys=False)}
     paths = [root / name for name in PUBLIC_FILES]
     for path in paths:
         if path.is_symlink():

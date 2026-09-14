@@ -23,8 +23,8 @@ function listItems(projects) {
             title: p.name,
             arg: p.name,
             valid: unique,
-            subtitle: unique ? 'Return: add task · ⌘Return: choose priority' :
-                'Duplicate list name — rename it in TickTick before using this action'
+            subtitle: unique ? '↵: add task, ⌘ + ↵: choose priority' :
+                'Duplicate name — rename in TickTick'
         };
     });
 }

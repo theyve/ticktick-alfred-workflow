@@ -21,15 +21,20 @@ class PackageTests(unittest.TestCase):
             shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(".git", "dist", "__pycache__", "prefs.plist"))
             (root / "prefs.plist").write_text("PRIVATE_SENTINEL")
             (root / "legacy.py").write_text("PRIVATE_SENTINEL")
+            source_manifest = (root / "info.plist").read_bytes()
+            self.assertNotIn("readme", plistlib.loads(source_manifest))
+            readme = root / "README.md"
+            readme.write_text(readme.read_text() + "\nUpdated build instructions.\n")
             output = builder.build(root)
+            self.assertEqual((root / "info.plist").read_bytes(), source_manifest)
             self.assertEqual(output.read_bytes(), builder.build(root).read_bytes())
             with zipfile.ZipFile(output) as archive:
                 self.assertEqual(set(archive.namelist()), {
-                    "info.plist", "icon.png", "README.md", "LICENSE"})
+                    "info.plist", "icon.png", "LICENSE"})
                 for name in archive.namelist():
                     self.assertNotIn(b"PRIVATE_SENTINEL", archive.read(name))
                 manifest = plistlib.loads(archive.read("info.plist"))
-                self.assertEqual(manifest["readme"], (root / "docs" / "WORKFLOW.md").read_text())
+                self.assertEqual(manifest["readme"], readme.read_text())
                 objects = {o["uid"]: o for o in manifest["objects"]}
                 self.assertEqual({o["type"] for o in objects.values()}, {
                     "alfred.workflow.input.keyword", "alfred.workflow.action.openurl",
