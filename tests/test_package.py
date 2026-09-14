@@ -22,7 +22,14 @@ class PackageTests(unittest.TestCase):
             (root / "prefs.plist").write_text("PRIVATE_SENTINEL")
             (root / "legacy.py").write_text("PRIVATE_SENTINEL")
             source_manifest = (root / "info.plist").read_bytes()
-            self.assertNotIn("readme", plistlib.loads(source_manifest))
+            source = plistlib.loads(source_manifest)
+            self.assertNotIn("readme", source)
+            for obj in source["objects"]:
+                if obj["type"] == "alfred.workflow.input.scriptfilter":
+                    script = obj["config"]["script"]
+                    self.assertIn("PLACEHOLDER", script)
+                    self.assertIn("scripts/lists.js", script)
+                    self.assertNotEqual(script, (root / "scripts/lists.js").read_text())
             readme = root / "README.md"
             readme.write_text(readme.read_text() + "\nUpdated build instructions.\n")
             output = builder.build(root)
