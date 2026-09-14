@@ -1,0 +1,14 @@
+# Local preferences and secrets
+prefs.plist
+.env
+.env.*
+
+# Build output and Python caches
+dist/
+__pycache__/
+*.py[cod]
+
+# Local tools
+.venv/
+.idea/
+.DS_Store

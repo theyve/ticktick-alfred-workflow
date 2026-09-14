@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.theyve.ticktick</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>createdby</key>
+	<string>Dave</string>
+	<key>description</key>
+	<string>Capture tasks in the TickTick Inbox</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>TickTick Inbox</string>
+	<key>version</key>
+	<string>2.0.0-beta.4</string>
+	<key>webaddress</key>
+	<string></string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>uid</key>
+			<string>A393F493-D246-5955-8823-7D5B731FC725</string>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>keyword</key>
+				<string>{var:new_keyword}</string>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+				<key>text</key>
+				<string>Add task to TickTick Inbox</string>
+				<key>subtext</key>
+				<string>Type a title, then press Return</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>724637BE-A65F-58A4-BEE4-8FD833E9A3AC</string>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>url</key>
+				<string>ticktick://x-callback-url/v1/add_task?title={query}</string>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>A6483BBD-D3D1-5EF9-ABD1-A7D247EC1D90</string>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>keyword</key>
+				<string>{var:today_keyword}</string>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<false/>
+				<key>text</key>
+				<string>Open Today in TickTick</string>
+				<key>subtext</key>
+				<string>Open directly in the TickTick app</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>49132733-E2AF-5A29-AAA7-11E62B0047BC</string>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>url</key>
+				<string>ticktick://v1/show?smartlist=today</string>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>B860B9DF-461F-5A2B-AF2C-ABFAA8229476</string>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>keyword</key>
+				<string>{var:week_keyword}</string>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<false/>
+				<key>text</key>
+				<string>Open Next 7 Days in TickTick</string>
+				<key>subtext</key>
+				<string>Open directly in the TickTick app</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>362DAF93-E9AC-575F-83AA-B99E94BABEE1</string>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>url</key>
+				<string>ticktick://v1/show?smartlist=next_7_days</string>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+			</dict>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>acceptsfiles</key>
+				<false/>
+				<key>acceptsmulti</key>
+				<false/>
+				<key>acceptstext</key>
+				<true/>
+				<key>acceptsurls</key>
+				<false/>
+				<key>name</key>
+				<string>Add to TickTick Inbox</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.universalaction</string>
+			<key>uid</key>
+			<string>AB2BFC76-5C8F-5AF0-8CF1-E1EAE275F784</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>7C7A1916-FF5F-5982-AA89-B9F9C65F3F11</string>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>variables</key>
+				<dict>
+					<key>task_title</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>8A93E394-1FDF-5C40-AEEC-5717323583B6</string>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>version</key>
+			<integer>3</integer>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Reading TickTick lists…</string>
+				<key>script</key>
+				<string>// TickTick's installed scripting dictionary documents the read-only projects command.
+// Alfred runs this directly as JavaScript for Automation; no shell or API token.
+function listItems(projects) {
+    if (!Array.isArray(projects) || !projects.every(function (p) {
+        return p &amp;&amp; typeof p.name === 'string' &amp;&amp; p.name.length &gt; 0 &amp;&amp;
+            typeof p.id === 'string' &amp;&amp; typeof p.closed === 'boolean';
+    })) {
+        throw new Error('Unexpected project format');
+    }
+    const active = projects.filter(function (p) {
+        return !p.closed &amp;&amp; p.kind === 'TASK';
+    });
+    active.sort(function (a, b) {
+        if (a.name === 'Inbox') return -1;
+        if (b.name === 'Inbox') return 1;
+        return a.name.localeCompare(b.name);
+    });
+    return active.map(function (p) {
+        // The documented URL selects by name. Do not silently choose between duplicates.
+        const unique = projects.filter(function (other) { return other.name === p.name; }).length === 1;
+        return {
+            uid: p.id,
+            title: p.name,
+            arg: p.name,
+            valid: unique,
+            subtitle: unique ? 'Return: add task · ⌘Return: choose priority' :
+                'Duplicate list name — rename it in TickTick before using this action'
+        };
+    });
+}
+
+function run() {
+    try {
+        const projects = JSON.parse(Application('TickTick').projects());
+        const items = listItems(projects);
+        if (!items.length) {
+            items.push({title: 'No active task lists', subtitle: 'Check your lists in TickTick.', valid: false});
+        }
+        return JSON.stringify({items: items, skipknowledge: true});
+    } catch (error) {
+        return JSON.stringify({items: [{
+            title: 'Could not read TickTick lists',
+            subtitle: 'Open TickTick and allow Alfred to control it in macOS Settings → Privacy &amp; Security → Automation.',
+            valid: false
+        }]});
+    }
+}
+</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string>Return: add task · ⌘Return: choose priority</string>
+				<key>title</key>
+				<string>Choose a TickTick list</string>
+				<key>type</key>
+				<integer>7</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>EE7C9A1E-13A4-5A7B-973B-8207EE9E663F</string>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>url</key>
+				<string>ticktick://x-callback-url/v1/add_task?title={var:task_title}&amp;list={query}</string>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>84D72E39-61EF-56B7-AA7C-D1B4F6A31BC4</string>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>variables</key>
+				<dict>
+					<key>task_title</key>
+					<string>{query}</string>
+					<key>task_list</key>
+					<string>inbox</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>3FCB2939-2346-50A4-B1ED-990EBFE14071</string>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>variables</key>
+				<dict>
+					<key>task_list</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>66D525C7-4C0F-52A7-A79D-55C244031207</string>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>fixedorder</key>
+				<true/>
+				<key>items</key>
+				<string>[{"title": "No priority", "arg": "0", "subtitle": "Return to add task"}, {"title": "Low priority", "arg": "1", "subtitle": "Return to add task"}, {"title": "Medium priority", "arg": "3", "subtitle": "Return to add task"}, {"title": "High priority", "arg": "5", "subtitle": "Return to add task"}]</string>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Choose with arrow keys or type to filter</string>
+				<key>title</key>
+				<string>Choose a priority</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>5FECCF1D-EC90-52D9-A3E6-39F4473C566D</string>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>url</key>
+				<string>ticktick://x-callback-url/v1/add_task?title={var:task_title}&amp;list={var:task_list}&amp;priority={query}</string>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>02FF5EF9-4EF7-59DF-BAF7-9493F1A2DD46</string>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>keyword</key>
+				<string>{var:inbox_keyword}</string>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<false/>
+				<key>text</key>
+				<string>Open TickTick Inbox</string>
+				<key>subtext</key>
+				<string>Open directly in the TickTick app</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>uid</key>
+			<string>C60F53AD-52A4-5477-8490-DB66718F3575</string>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>version</key>
+			<integer>1</integer>
+			<key>config</key>
+			<dict>
+				<key>url</key>
+				<string>ticktick:///webapp/#p/inbox/tasks</string>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+			</dict>
+		</dict>
+	</array>
+	<key>connections</key>
+	<dict>
+		<key>A393F493-D246-5955-8823-7D5B731FC725</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>724637BE-A65F-58A4-BEE4-8FD833E9A3AC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>7C7A1916-FF5F-5982-AA89-B9F9C65F3F11</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Choose list</string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>84D72E39-61EF-56B7-AA7C-D1B4F6A31BC4</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Choose priority</string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+		</array>
+		<key>A6483BBD-D3D1-5EF9-ABD1-A7D247EC1D90</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>49132733-E2AF-5A29-AAA7-11E62B0047BC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B860B9DF-461F-5A2B-AF2C-ABFAA8229476</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>362DAF93-E9AC-575F-83AA-B99E94BABEE1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>AB2BFC76-5C8F-5AF0-8CF1-E1EAE275F784</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>724637BE-A65F-58A4-BEE4-8FD833E9A3AC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>7C7A1916-FF5F-5982-AA89-B9F9C65F3F11</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Choose list</string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>84D72E39-61EF-56B7-AA7C-D1B4F6A31BC4</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Choose priority</string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+		</array>
+		<key>7C7A1916-FF5F-5982-AA89-B9F9C65F3F11</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8A93E394-1FDF-5C40-AEEC-5717323583B6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+		</array>
+		<key>8A93E394-1FDF-5C40-AEEC-5717323583B6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EE7C9A1E-13A4-5A7B-973B-8207EE9E663F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>3FCB2939-2346-50A4-B1ED-990EBFE14071</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Choose priority</string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+		</array>
+		<key>84D72E39-61EF-56B7-AA7C-D1B4F6A31BC4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>66D525C7-4C0F-52A7-A79D-55C244031207</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+		</array>
+		<key>3FCB2939-2346-50A4-B1ED-990EBFE14071</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>66D525C7-4C0F-52A7-A79D-55C244031207</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+		</array>
+		<key>66D525C7-4C0F-52A7-A79D-55C244031207</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5FECCF1D-EC90-52D9-A3E6-39F4473C566D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>02FF5EF9-4EF7-59DF-BAF7-9493F1A2DD46</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C60F53AD-52A4-5477-8490-DB66718F3575</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>uidata</key>
+	<dict>
+		<key>A393F493-D246-5955-8823-7D5B731FC725</key>
+		<dict>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>40</integer>
+		</dict>
+		<key>724637BE-A65F-58A4-BEE4-8FD833E9A3AC</key>
+		<dict>
+			<key>xpos</key>
+			<integer>900</integer>
+			<key>ypos</key>
+			<integer>40</integer>
+		</dict>
+		<key>A6483BBD-D3D1-5EF9-ABD1-A7D247EC1D90</key>
+		<dict>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>600</integer>
+		</dict>
+		<key>49132733-E2AF-5A29-AAA7-11E62B0047BC</key>
+		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>600</integer>
+		</dict>
+		<key>B860B9DF-461F-5A2B-AF2C-ABFAA8229476</key>
+		<dict>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>770</integer>
+		</dict>
+		<key>362DAF93-E9AC-575F-83AA-B99E94BABEE1</key>
+		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>770</integer>
+		</dict>
+		<key>AB2BFC76-5C8F-5AF0-8CF1-E1EAE275F784</key>
+		<dict>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>190</integer>
+		</dict>
+		<key>7C7A1916-FF5F-5982-AA89-B9F9C65F3F11</key>
+		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>190</integer>
+		</dict>
+		<key>8A93E394-1FDF-5C40-AEEC-5717323583B6</key>
+		<dict>
+			<key>xpos</key>
+			<integer>580</integer>
+			<key>ypos</key>
+			<integer>190</integer>
+		</dict>
+		<key>EE7C9A1E-13A4-5A7B-973B-8207EE9E663F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>900</integer>
+			<key>ypos</key>
+			<integer>190</integer>
+		</dict>
+		<key>84D72E39-61EF-56B7-AA7C-D1B4F6A31BC4</key>
+		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>370</integer>
+		</dict>
+		<key>3FCB2939-2346-50A4-B1ED-990EBFE14071</key>
+		<dict>
+			<key>xpos</key>
+			<integer>580</integer>
+			<key>ypos</key>
+			<integer>370</integer>
+		</dict>
+		<key>66D525C7-4C0F-52A7-A79D-55C244031207</key>
+		<dict>
+			<key>xpos</key>
+			<integer>900</integer>
+			<key>ypos</key>
+			<integer>370</integer>
+		</dict>
+		<key>5FECCF1D-EC90-52D9-A3E6-39F4473C566D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1190</integer>
+			<key>ypos</key>
+			<integer>370</integer>
+		</dict>
+		<key>02FF5EF9-4EF7-59DF-BAF7-9493F1A2DD46</key>
+		<dict>
+			<key>xpos</key>
+			<integer>580</integer>
+			<key>ypos</key>
+			<integer>600</integer>
+		</dict>
+		<key>C60F53AD-52A4-5477-8490-DB66718F3575</key>
+		<dict>
+			<key>xpos</key>
+			<integer>900</integer>
+			<key>ypos</key>
+			<integer>600</integer>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>new_keyword</string>
+			<key>label</key>
+			<string>Add task to TickTick Inbox</string>
+			<key>description</key>
+			<string>Workflow keyword</string>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>ttn</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>today_keyword</string>
+			<key>label</key>
+			<string>Open Today in TickTick</string>
+			<key>description</key>
+			<string>Workflow keyword</string>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>ttt</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>week_keyword</string>
+			<key>label</key>
+			<string>Open Next 7 Days in TickTick</string>
+			<key>description</key>
+			<string>Workflow keyword</string>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>tt7</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>inbox_keyword</string>
+			<key>label</key>
+			<string>Open Inbox</string>
+			<key>description</key>
+			<string>Workflow keyword</string>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>tti</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>## Usage
+
+```text
+ttn Buy milk
+```
+
+* **Return:** add to Inbox, without priority.
+* **⌥Return:** choose a list. Then Return to add, or ⌘Return to choose a priority.
+* **⌘Return:** choose a priority and add to Inbox.
+
+List and priority selection are optional. The list picker reads all non-archived task lists from TickTick. Priority choices are None, Low, Medium, and High. TickTick opens when you add the task.
+
+| Keyword | Action |
+| --- | --- |
+| `ttn Task title` | Add a task |
+| `tti` | Open Inbox |
+| `ttt` | Open Today |
+| `tt7` | Open Next 7 Days |
+
+Alternatively, select text and use **Add to TickTick Inbox** in Universal Actions. The same optional modifiers apply.
+
+## Setup
+
+Requires Alfred with Powerpack and the TickTick Mac app, signed in.
+
+1. Open the `.alfredworkflow` file to install. Disable older workflows using the same keywords.
+2. On first list selection, allow Alfred to control TickTick if macOS asks.
+3. Add a test task and check its destination and priority.
+
+Change keywords in **Configure Workflow**. No extra software or API token needed.
+
+Beta: the new selection flow still needs testing in Alfred.
+</string>
+</dict>
+</plist>
